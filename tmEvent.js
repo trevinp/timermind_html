@@ -11,15 +11,17 @@ class tmEvent {
         this.eventOccurenceType = eventOccurenceType;
     }
 
-    addEvent(newEvent) {
+    add(newEvent) {
         tmEvents.push(newEvent);
-        console.log(tmEvents);
     }
 
-    deleteEvent() {
+    add() {
+        tmEvents.push(this);
+    }
+
+    delete() {
         let index = tmEvents.findIndex(i => i.ID == this.ID);
         tmEvents.splice(index, 1);
-        console.log(tmEvents);
     }
 
     getEventsByOwnerId() {
@@ -28,10 +30,12 @@ class tmEvent {
 }
 
 let myEvent = new tmEvent(1, 1, 'test', 2, 'notes','01/01/2000', 3);
-myEvent.addEvent(this);
-console.log(tmEvents);
+myEvent.add();
+console.log('Events: ', tmEvents);
 
-myEvent.deleteEvent();
+//myEvent.delete();
 
 //console.log(tmEvents);
-let myEven2t = new tmEvent(2, 2, 'test2', 3, 'notes2','02/01/2000', 3);
+let myEvent2 = new tmEvent(2, 2, 'test2', 3, 'notes2','02/01/2000', 3);
+myEvent2.add();
+console.log('Events: ', tmEvents);
