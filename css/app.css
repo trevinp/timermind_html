@@ -1,0 +1,8 @@
+.tabulator-row .tabulator-cell{
+    padding:10px 5px;
+}
+
+#newEvent {
+    background-color: #dbe8cc;
+    color: darkslategray;
+}
