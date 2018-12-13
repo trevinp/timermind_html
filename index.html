@@ -82,7 +82,7 @@
 
         <!-- Tabulator data table -->
         <div id="timermind-table"></div>
-
+        <div id="info">Info: </div>
     </main>
 
     <!-- Button trigger modal -->
@@ -125,15 +125,19 @@
                    </button>
                </div>
                <div class="modal-body">
-                   Add event here...
+                   Description: <input type="text" id="description" value="">
+                   Date: <input type="date" id="date" value="">
+                   Type: <input type="text" id="type" value="">
+                   Occurence: <input type="radio" id="occurence" value="">
                </div>
                <div class="modal-footer">
                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                   <button type="button" class="btn btn-primary">Save event</button>
+                   <button type="button" onclick="SaveNew()" data-dismiss="modal" class="btn btn-primary">Save event</button>
                </div>
            </div>
        </div>
    </div>
+
 <!--
     <footer class="footer">
         <div class="container">

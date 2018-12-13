@@ -24,3 +24,13 @@ var table = new Tabulator("#timermind-table", {
         alert("ID " + row.getData().id + " Clicked!");
     },
 });
+
+function SaveNew() {
+    var eventName = document.getElementById("description").value;
+    var eventDate = document.getElementById("date").value;
+    var eventType = document.getElementById("type").value;
+    var eventOccurence = document.getElementById("occurence").value;
+    document.getElementById("info").innerHTML = eventName + " " + eventDate + " " + eventType + " " + eventOccurence;
+    document.getElementById("description").value = "";
+    document.getElementById("date").value = "";
+}
