@@ -33,4 +33,8 @@ function SaveNew() {
     document.getElementById("info").innerHTML = eventName + " " + eventDate + " " + eventType + " " + eventOccurence;
     document.getElementById("description").value = "";
     document.getElementById("date").value = "";
+    let myEvent = new tmEvent(1, 1, eventName, eventType, 'notes',eventDate, eventOccurence);
+    eventTableData.push(myEvent);
+    table.updateOrAddData([{id:1, ownerid:"12345",eventname:eventName,eventtype:eventType,
+        eventdatetime:eventDate,eventoccurencetype:eventOccurence}]);
 }
