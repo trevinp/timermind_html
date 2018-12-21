@@ -38,3 +38,7 @@ function SaveNew() {
     table.updateOrAddData([{id:1, ownerid:"12345",eventname:eventName,eventtype:eventType,
         eventdatetime:eventDate,eventoccurencetype:eventOccurence}]);
 }
+
+function login() {
+    window.location.href = 'index.html';
+}
