@@ -42,9 +42,8 @@ function SaveNew() {
 async function getAPIStatus() {
     (async() => {
         try {
-          var response = await fetch('https://timermind.azurewebsites.net/api/Event/GetEventsByOwner/1',  {
-            mode: 'no-cors'
-          });
+          var response = await fetch('https://timermind.azurewebsites.net/api/Event/GetEventsByOwner/1');
+            //var response = await fetch('https://timermind.azurewebsites.net/api/Event/GetAPIStatus');
           var data = await response.json();
           console.log(data);
         } catch (e) {
