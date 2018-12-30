@@ -19,8 +19,9 @@ getEvents(eventTableData2); // call API to retrieve owner events
 function SaveNew() {
     var eventName = document.getElementById('description').value;
     var eventDate = document.getElementById('date').value;
-    var eventType = document.getElementById('type').value;
-    var eventOccurence = document.getElementById('occurence').value;
+    var eventType = document.getElementById('eventType').value;
+    var eventOccurence = document.getElementById('occurenceType').value;
+
     document.getElementById("info").innerHTML = eventName + " " + eventDate + " " + eventType + " " + eventOccurence;
     document.getElementById("description").value = "";
     document.getElementById("date").value = "";
