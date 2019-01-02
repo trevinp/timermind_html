@@ -11,6 +11,8 @@ let ownerID = 2;
 let eventTable;
 let data;
 let eventTableData2 = [];
+let GoogleUser;
+
 getEvents(eventTableData2); // call API to retrieve owner events
 
 // https://www.jqueryscript.net/table/Easy-Data-Table-Generator-with-jQuery-JSON-Tabulator.html
