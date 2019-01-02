@@ -13,13 +13,11 @@ let data;
 let eventTableData2 = [];
 let GoogleUser;
 
-getEvents(eventTableData2); // call API to retrieve owner events
-
-if (typeof GoogleUser == 'undefined') {
+/* if (typeof GoogleUser == 'undefined') {
     window.location.href = "login.html";
 }
-
-document.getElementById("welcome").innerHTML = "Upcoming for " + GoogleUser.getName();
+ */
+getEvents(eventTableData2); // call API to retrieve owner events
 
 // https://www.jqueryscript.net/table/Easy-Data-Table-Generator-with-jQuery-JSON-Tabulator.html
 // http://tabulator.info/docs/4.0
@@ -40,5 +38,12 @@ function SaveNew() {
     }]);
 }
 
-
+function login()
+{
+    if (document.getElementById('inputEmail'.value == 'test'))
+    {
+        window.location.replace("index.html");
+    }
+    
+}
 
