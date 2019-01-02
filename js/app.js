@@ -15,6 +15,12 @@ let GoogleUser;
 
 getEvents(eventTableData2); // call API to retrieve owner events
 
+if (typeof GoogleUser == 'undefined') {
+    window.location.href = "login.html";
+}
+
+document.getElementById("welcome").innerHTML = "Upcoming for " + GoogleUser.getName();
+
 // https://www.jqueryscript.net/table/Easy-Data-Table-Generator-with-jQuery-JSON-Tabulator.html
 // http://tabulator.info/docs/4.0
 
