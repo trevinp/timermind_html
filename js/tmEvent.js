@@ -1,14 +1,14 @@
 tmEvents = [];
 
 class tmEvent {
-    constructor(ID, ownerID, eventName, eventType, eventNotes, eventDateTime, eventOccurenceType) {
-        this.ID = ID;
-        this.ownerID = ownerID;
-        this.eventName = eventName;
-        this.eventType = eventType;
-        this.eventNotes = eventNotes;
-        this.eventDateTime = eventDateTime;
-        this.eventOccurenceType = eventOccurenceType;
+    constructor(OwnerID, eventName, EventType, Notes, Date, OccurenceType) {
+        //this.Id = Id;
+        this.OwnerId = OwnerID;
+        this.Name = eventName;
+        this.EventType = EventType;
+        this.Notes = Notes;
+        this.Date = Date;
+        this.OccurenceType = OccurenceType;
     }
 
     add(newEvent) {

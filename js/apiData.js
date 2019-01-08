@@ -1,5 +1,6 @@
 
 let TIMERMIND_URL = "https://timermind.azurewebsites.net/api/Event/";
+// let TIMERMIND_URL = "http://localhost/api/Event";
 let GET_EVENTS = "GetEventsByOwner/";
 let API_STATUS = "GetAPIStatus/";
 
@@ -31,15 +32,34 @@ async function getEvents() {
         }
     })();
 };
+async function saveEvent2(ownerID, eventName, EventType, Notes, Date, OccurenceType) {
+ 
+}
 
 async function saveEvent(newEvent) {
-    let fetchData = {
-        method: 'POST',
-        body: newEvent,
-        headers: new Headers()
+    var data = {
+        "OwnerId" : newEvent.OwnerId,
+        "Name" : newEvent.Name,
+        "EventType" : newEvent.EventType,
+        "Notes" : newEvent.Notes,
+        "Date" : newEvent.Date,
+        "OccurenceType" : newEvent.OccurenceType
+
     }
 
-    var response = await fetch(url, fetchData)
+    console.log("Data: " + data);
+    console.log("json data: " + JSON.stringify(data));
+
+    let fetchData = {
+        method: 'POST',
+        body: JSON.stringify(data) ,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+    }
+
+    var response = await fetch(TIMERMIND_URL, fetchData)
         .then(function () {
             console.log('added new event')
         })

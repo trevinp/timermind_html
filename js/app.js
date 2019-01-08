@@ -7,7 +7,7 @@ var eventTableData = [
 ];
 
 
-let ownerID = 2;
+var _ownerID = 2;
 let eventTable;
 let data;
 let eventTableData2 = [];
@@ -22,7 +22,7 @@ getEvents(eventTableData2); // call API to retrieve owner events
 // https://www.jqueryscript.net/table/Easy-Data-Table-Generator-with-jQuery-JSON-Tabulator.html
 // http://tabulator.info/docs/4.0
 
-function SaveNew() {
+function SaveNew2() {
     var eventName = document.getElementById('description').value;
     var eventDate = document.getElementById('date').value;
     var eventType = document.getElementById('eventType').value;
@@ -31,7 +31,9 @@ function SaveNew() {
     document.getElementById("info").innerHTML = eventName + " " + eventDate + " " + eventType + " " + eventOccurence;
     document.getElementById("description").value = "";
     document.getElementById("date").value = "";
-    let myEvent = new tmEvent(1, 1, eventName, eventType, 'notes', eventDate, eventOccurence);
+    var myEvent = new tmEvent(_ownerID, eventName, eventType, 'notes', eventDate, eventOccurence);
+    saveEvent(myEvent);
+
     eventTable.updateOrAddData([{
         Id: 1, OwnerId: "12345", Name: eventName, EventType: eventType,
         Date: eventDate, OccurenceType: eventOccurence
