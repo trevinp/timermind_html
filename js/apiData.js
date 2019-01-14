@@ -14,7 +14,7 @@ async function getEvents() {
             eventTableData = data;
             eventTable = new Tabulator("#timermind-table", {
                 height: 205,
-                data: eventTableData2,
+                data: eventTableData,
                 layout: "fitColumns",
                 resizableColumns: true,
                 columns: [
