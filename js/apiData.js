@@ -54,13 +54,16 @@ async function saveEvent(newEvent) {
     var fetchData = {
         method: 'POST',
         body: JSON.stringify(data) ,
-        headers: {},
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
     }
 
     fetch(TIMERMIND_URL2, fetchData)
         .then(function (response) {
             console.log('added new event');
-            console.log('Response1: ' + response.json);
+            console.log('Response1: ' + response);
         })
         .catch(err => console.log('Error in saveevent'));
 
