@@ -1,7 +1,5 @@
 
 let TIMERMIND_URL = "https://timermind.azurewebsites.net/api/Event/";
-let TIMERMIND_URL2= "https://timermind.azurewebsites.net/api/Event";
-// let TIMERMIND_URL = "http://localhost/api/Event";
 let GET_EVENTS = "GetEventsByOwner/";
 let API_STATUS = "GetAPIStatus/";
 
@@ -13,7 +11,7 @@ async function getEvents() {
             let response = await fetch(TIMERMIND_URL + GET_EVENTS + ownerID);
             let data = await response.json();
             console.log(data);
-            eventTableData2 = data;
+            eventTableData = data;
             eventTable = new Tabulator("#timermind-table", {
                 height: 205,
                 data: eventTableData2,
@@ -33,9 +31,6 @@ async function getEvents() {
         }
     })();
 };
-async function saveEvent2(ownerID, eventName, EventType, Notes, Date, OccurenceType) {
- 
-}
 
 async function saveEvent(newEvent) {
     var data = {
@@ -60,13 +55,12 @@ async function saveEvent(newEvent) {
           },
     }
 
-    fetch(TIMERMIND_URL2, fetchData)
+    fetch(TIMERMIND_URL, fetchData)
         .then(function (response) {
             console.log('added new event');
-            console.log('Response1: ' + response);
+            console.log('Response: ' + response);
         })
         .catch(err => console.log('Error in saveevent'));
-
 };
 
 async function getAPIStatus() {

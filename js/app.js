@@ -1,28 +1,20 @@
-//define some sample data
-var eventTableData = [
-    { Id: 1, OwnerId: "123abc", Name: "Dad Birthday", EventType: "Birthday", Date: "01/04/1930", OccurenceType: "Yearly" },
-    { id: 2, OwnerId: "456def", Name: "Our Anniversary", EventType: "Anniversary", Date: "08/16/2013", OccurenceType: "Yearly" },
-    { id: 4, OwnerId: "123jkl", Name: "Vacation Rental", EventType: "Misc", Date: "04/04/2000", OccurenceType: "Yearly" },
-    { id: 5, OwnerId: "456mno", Name: "Janis Birthday", EventType: "Birthday", Date: "12/08/1970", OccurenceType: "Yearly" }
-];
-
 
 var _ownerID = 2;
 let eventTable;
 let data;
-let eventTableData2 = [];
+let eventTableData = [];
 let GoogleUser;
 
 /* if (typeof GoogleUser == 'undefined') {
     window.location.href = "login.html";
 }
  */
-getEvents(eventTableData2); // call API to retrieve owner events
+getEvents(eventTableData); // call API to retrieve owner events
 
 // https://www.jqueryscript.net/table/Easy-Data-Table-Generator-with-jQuery-JSON-Tabulator.html
 // http://tabulator.info/docs/4.0
 
-function SaveNew2() {
+function SaveNew() {
     var eventName = document.getElementById('description').value;
     var eventDate = document.getElementById('date').value;
     var eventType = document.getElementById('eventType').value;
@@ -35,7 +27,7 @@ function SaveNew2() {
     saveEvent(myEvent);
 
     eventTable.updateOrAddData([{
-        Id: 1, OwnerId: "12345", Name: eventName, EventType: eventType,
+        Id: 1, OwnerId: _ownerID, Name: eventName, EventType: eventType,
         Date: eventDate, OccurenceType: eventOccurence
     }]);
 }
