@@ -1,6 +1,6 @@
 
 let TIMERMIND_URL = "https://timermind.azurewebsites.net/api/Event/";
-let TIMERMIND_URL2= "https://timermind.azurewebsites.net/api/Event";
+let TIMERMIND_URL2= "https://timermind.azurewebsites.net/api/Event/Post";
 // let TIMERMIND_URL = "http://localhost/api/Event";
 let GET_EVENTS = "GetEventsByOwner/";
 let API_STATUS = "GetAPIStatus/";
