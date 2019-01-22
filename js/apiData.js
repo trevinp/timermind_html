@@ -7,8 +7,8 @@ let API_STATUS = "GetAPIStatus/";
 async function getEvents() {
     (async () => {
         try {
-            ownerID = document.getElementById("ownerid").value;
-            let response = await fetch(TIMERMIND_URL + GET_EVENTS + ownerID);
+            _ownerID = getCookie('timermindUser');
+            let response = await fetch(TIMERMIND_URL + GET_EVENTS + _ownerID);
             let data = await response.json();
             console.log(data);
             eventTableData = data;
@@ -33,8 +33,10 @@ async function getEvents() {
 };
 
 async function saveEvent(newEvent) {
+    _ownerID = getCookie('timermindUser');
     var data = {
         "OwnerId" : newEvent.OwnerId,
+        "GoogleID" : _ownerID,
         "Name" : newEvent.Name,
         "EventType" : newEvent.EventType,
         "Notes" : newEvent.Notes,

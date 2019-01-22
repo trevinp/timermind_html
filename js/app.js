@@ -1,5 +1,5 @@
 
-var _ownerID = 2;
+var _ownerID = 0;
 let eventTable;
 let data;
 let eventTableData = [];
@@ -10,6 +10,8 @@ let GoogleUser;
 }
  */
 var _ownerID = getCookie('timermindUser');
+var _email = getCookie('email');
+
 document.getElementById("ownerid").value = _ownerID;
 getEvents(eventTableData); // call API to retrieve owner events
 

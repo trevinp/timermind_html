@@ -1,9 +1,10 @@
 tmEvents = [];
 
 class tmEvent {
-    constructor(OwnerID, eventName, EventType, Notes, Date, OccurenceType) {
+    constructor(OwnerID, GoogleID, eventName, EventType, Notes, Date, OccurenceType) {
         //this.Id = Id;
         this.OwnerId = OwnerID;
+        this.GoogleId = GoogleID;
         this.Name = eventName;
         this.EventType = EventType;
         this.Notes = Notes;
@@ -29,13 +30,13 @@ class tmEvent {
     }
 }
 
-let myEvent = new tmEvent(1, 1, 'test', 2, 'notes','01/01/2000', 3);
-myEvent.add();
+//let myEvent = new tmEvent(1, 1, 'test', 2, 'notes','01/01/2000', 3);
+//myEvent.add();
 //console.log('Events: ', tmEvents);
 
 //myEvent.delete();
 
 //console.log(tmEvents);
-let myEvent2 = new tmEvent(2, 2, 'test2', 3, 'notes2','02/01/2000', 3);
-myEvent2.add();
+//let myEvent2 = new tmEvent(2, 2, 'test2', 3, 'notes2','02/01/2000', 3);
+//myEvent2.add();
 //console.log('Events: ', tmEvents);
