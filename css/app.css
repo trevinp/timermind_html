@@ -3,6 +3,11 @@
 }
 
 #newEvent {
-    background-color: #dbe8cc;
+    background-color: #dee6d6;
+    color: darkslategray;
+}
+
+#myEvents {
+    background-color: #dee6d6;
     color: darkslategray;
 }

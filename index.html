@@ -10,6 +10,8 @@
     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
     <link href="dist_tabulator/css/tabulator.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
+    <meta name="google-signin-client_id" content="684232194928-qi13kciku6pqvq8jobj53nbur0acaoaa.apps.googleusercontent.com">
+
     <title>Timermind</title>
 </head>
 
@@ -28,33 +30,37 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
+                    <button type="button" id="myEvents" class="btn btn-secondary" onclick="getEvents();">My Events</button>
                     <button type="button" id="newEvent" class="btn btn-secondary" data-toggle="modal" data-target="#addEvent"
                         style="margin-left:15px;">
                         New
                     </button>
                 </ul>
                 <form class="form-inline mt-2 mt-md-0">
-                    <!--                  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->
-                    <!--                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
                 </form>
             </div>
+
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <div>
+                <a href="#" onclick="signOut();">Sign out</a>
+            </div>
+
         </nav>
     </header>
 
     <main role="main" class="container">
         <section id="upcoming">
             <h3 class="mt-5" id="welcome">Upcoming:</h3> </br>
-            <div>
+<!--             <div>
                 <button type="button" onclick="getAPIStatus();">API Status</button>
-            </div>
+            </div> -->
             <div>
-                <button type="button" onclick="getEvents();">Get My Events</button>
+                <!-- <button type="button" onclick="getEvents();">Get My Events</button> -->
                 <label>OwnerID: </label> <textarea id="ownerid">1</textarea>
             </div>
         </section>
         <!-- Tabulator data table -->
         <div id="timermind-table"></div>
-        <div id="info">Info: </div>
     </main>
 
     <!-- Button trigger modal -->
@@ -77,7 +83,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-secondary">Delete event</button>
+                    <!-- <button type="button" class="btn btn-secondary">Delete event</button> -->
                     <button type="button" class="btn btn-info">Save changes</button>
                 </div>
             </div>
@@ -101,7 +107,7 @@
                         <option value="1">Birthday</option>
                         <option value="2">Anniversary</option>
                         <option value="4">Other</option>
-                      </select>   
+                    </select>
                     Occurence: <select id="occurenceType">
                         <option value="1">Yearly</option>
                         <option value="2">Monthly</option>
@@ -117,13 +123,39 @@
         </div>
     </div>
 
-    <!--
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted">Copyright 2018 by Timermind</p>
-        </div>
-    </footer> -->
+    <script>
+        function onSignIn(googleUser) {
+            // console.log('in onsignin');
+            GoogleUser = googleUser;
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            // console.log('Full Name: ' + profile.getName());
+            // console.log('Given Name: ' + profile.getGivenName());
+            // console.log('Family Name: ' + profile.getFamilyName());
+            //console.log("Image URL: " + profile.getImageUrl());
+           //  console.log("Email: " + profile.getEmail());
 
+            // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            // console.log("ID Token: " + id_token);
+            setCookie('timermindUser', profile.getId(), 365);
+            setCookie('email', profile.getEmail(), 365);
+        }
+    </script>
+
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out...');
+                setCookie('timermindUser', '', 0);
+                setCookie('email', '', 0);
+            });
+            reset();
+        }
+
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

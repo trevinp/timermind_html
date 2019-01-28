@@ -10,7 +10,7 @@ async function getEvents() {
             _ownerID = getCookie('timermindUser');
             let response = await fetch(TIMERMIND_URL + GET_EVENTS + _ownerID);
             let data = await response.json();
-            console.log(data);
+            // console.log(data);
             eventTableData = data;
             eventTable = new Tabulator("#timermind-table", {
                 height: 205,
@@ -35,17 +35,16 @@ async function getEvents() {
 async function saveEvent(newEvent) {
     _ownerID = getCookie('timermindUser');
     var data = {
-        "OwnerId" : newEvent.OwnerId,
+        "OwnerId" : _ownerID,
         "GoogleID" : _ownerID,
         "Name" : newEvent.Name,
         "EventType" : newEvent.EventType,
         "Notes" : newEvent.Notes,
         "Date" : newEvent.Date,
         "OccurenceType" : newEvent.OccurenceType
-
     }
 
-    console.log("Data: " + data);
+    console.log("Data: " + data.values);
     console.log("json data: " + JSON.stringify(data));
 
     var fetchData = {
@@ -60,7 +59,7 @@ async function saveEvent(newEvent) {
     fetch(TIMERMIND_URL, fetchData)
         .then(function (response) {
             console.log('added new event');
-            console.log('Response: ' + response);
+            console.log('Response: ' + response.data);
         })
         .catch(err => console.log('Error in saveevent'));
 };

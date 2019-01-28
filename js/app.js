@@ -24,10 +24,10 @@ function SaveNew() {
     var eventType = document.getElementById('eventType').value;
     var eventOccurence = document.getElementById('occurenceType').value;
 
-    document.getElementById("info").innerHTML = eventName + " " + eventDate + " " + eventType + " " + eventOccurence;
+    // document.getElementById("info").innerHTML = eventName + " " + eventDate + " " + eventType + " " + eventOccurence;
     document.getElementById("description").value = "";
     document.getElementById("date").value = "";
-    var myEvent = new tmEvent(_ownerID, eventName, eventType, 'notes', eventDate, eventOccurence);
+    var myEvent = new tmEvent(_ownerID, _ownerID, eventName, eventType, 'Notes', eventDate, eventOccurence);
     saveEvent(myEvent);
 
     eventTable.updateOrAddData([{
@@ -36,21 +36,24 @@ function SaveNew() {
     }]);
 }
 
-function login()
-{
-    if (document.getElementById('inputEmail'.value == 'test'))
-    {
+function reset() {
+    document.getElementById("ownerid").value = "";
+    getEvents(eventTableData); // call API to retrieve owner events
+}
+
+function login() {
+    if (document.getElementById('inputEmail'.value == 'test')) {
         window.location.replace("index.html");
     }
-    
+
 }
 
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
+    var expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-  }
+}
 
 function getCookie(c_name) {
     if (document.cookie.length > 0) {
