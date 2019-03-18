@@ -14,6 +14,15 @@ var _email = getCookie('email');
 
 document.getElementById("ownerid").value = _ownerID;
 getEvents(eventTableData); // call API to retrieve owner events
+/* document.getElementById("timermind-table").tabulator({
+    rowClick: function (e, row) {
+        //e - the click event object
+        //row - row component
+
+        var index = row.getIndex();
+        console.log("The row clicked is: " + index)
+    },
+}); */
 
 // https://www.jqueryscript.net/table/Easy-Data-Table-Generator-with-jQuery-JSON-Tabulator.html
 // http://tabulator.info/docs/4.0

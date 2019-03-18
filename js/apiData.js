@@ -17,6 +17,7 @@ async function getEvents() {
                 data: eventTableData,
                 layout: "fitColumns",
                 resizableColumns: true,
+                selectable: 1,
                 columns: [
                     { title: "ID", field: "Id", width: 50, editor: "input" },
                     { title: "Event Name", field: "Name", width: 150, editor: "input" },
