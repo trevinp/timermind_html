@@ -32,11 +32,12 @@ function SaveNew() {
     var eventDate = document.getElementById('date').value;
     var eventType = document.getElementById('eventType').value;
     var eventOccurence = document.getElementById('occurenceType').value;
+    var Notes = document.getElementById('notes').value;
 
-    // document.getElementById("info").innerHTML = eventName + " " + eventDate + " " + eventType + " " + eventOccurence;
     document.getElementById("description").value = "";
     document.getElementById("date").value = "";
-    var myEvent = new tmEvent(_ownerID, _ownerID, eventName, eventType, 'Notes', eventDate, eventOccurence);
+    document.getElementById("notes").value = "";
+    var myEvent = new tmEvent(_ownerID, _ownerID, eventName, eventType, Notes, eventDate, eventOccurence);
     saveEvent(myEvent);
 
     eventTable.updateOrAddData([{

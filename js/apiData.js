@@ -24,6 +24,7 @@ async function getEvents() {
                     { title: "Type", field: "EventType", align: "left", editor: "select", editorParams: { values: ["Birthday", "Anniversary", "Misc"] } },
                     { title: "Date", field: "Date", editor: "input" },
                     { title: "Occurence", field: "OccurenceType", editor: "select", editorParams: { values: ["Yearly", "Monthly", "Weekly", "None"] } },
+                    { title: "Notes", field: "Notes", width: 150, editor: "input" },
                 ],
             });
         }
