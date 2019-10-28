@@ -2,6 +2,7 @@
 let TIMERMIND_URL = "https://timermind.azurewebsites.net/api/Event/";
 let GET_EVENTS = "GetEventsByOwner/";
 let API_STATUS = "GetAPIStatus/";
+selectedId = 0;
 
 // Call the API, get events for owner, and refresh the data table
 async function getEvents() {
@@ -13,6 +14,10 @@ async function getEvents() {
             // console.log(data);
             eventTableData = data;
             eventTable = new Tabulator("#timermind-table", {
+                rowClick:function(e, row){
+                    selectedId = row.getData().Id; // Get ID of selected row
+                    //alert('You selected a row with id: ' + selectedId);
+                },
                 height: 205,
                 data: eventTableData,
                 layout: "fitColumns",
@@ -20,7 +25,7 @@ async function getEvents() {
                 selectable: 1,
                 columns: [
                     { title: "ID", field: "Id", width: 50, editor: "input" },
-                    { title: "Event Name", field: "Name", width: 150, editor: "input" },
+                    { title: "Event Name", field: "Name", width: 150, editor: "input", },
                     { title: "Type", field: "EventType", align: "left", editor: "select", editorParams: { values: ["Birthday", "Anniversary", "Misc"] } },
                     { title: "Date", field: "Date", editor: "input" },
                     { title: "Occurence", field: "OccurenceType", editor: "select", editorParams: { values: ["Yearly", "Monthly", "Weekly", "None"] } },

@@ -58,11 +58,14 @@
             </div> -->
             <div>
                 <!-- <button type="button" onclick="getEvents();">Get My Events</button> -->
-                <label>OwnerID: </label> <textarea id="ownerid">1</textarea>
+                <!--<label>OwnerID: </label> <textarea id="ownerid">1</textarea>-->
             </div>
         </section>
         <!-- Tabulator data table -->
         <div id="timermind-table"></div>
+
+        <div id="btnDelete" class="btn btn-info btn-md" style="width: 13em;"  onclick="deleteRow()">Delete Highlighted Row</div>
+
     </main>
 
     <!-- Button trigger modal -->
@@ -157,6 +160,10 @@
                 setCookie('email', '', 0);
             });
             reset();
+        }
+
+        function deleteRow() {
+            alert('Delete row: ' + selectedId + "?");
         }
 
     </script>
