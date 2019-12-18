@@ -5,7 +5,7 @@ let API_STATUS = "GetAPIStatus/";
 selectedId = 0;
 
 // Call the API, get events for owner, and refresh the data table
-async function getEvents() {
+async function getEvents() {    
     (async () => {
         try {
             _ownerID = getCookie('timermindUser');
