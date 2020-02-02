@@ -71,6 +71,27 @@ async function saveEvent(newEvent) {
         .catch(err => console.log('Error in saveevent'));
 };
 
+async function deleteEvent(eventId) {
+    _ownerID = getCookie('timermindUser');
+
+    console.log("eventId: " + eventId);
+
+    var deleteData = {
+        method: 'DELETE',
+        body: eventId  ,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+    }
+
+    fetch(TIMERMIND_URL, deleteData)
+        .then(function (response) {
+            console.log('deleted event');
+            console.log('Response: ' + response.data);
+        })
+        .catch(err => console.log('Error in deleteEvent'));
+};
 async function getAPIStatus() {
     (async () => {
         try {
