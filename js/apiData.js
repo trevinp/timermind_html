@@ -76,22 +76,16 @@ async function deleteEvent(eventId) {
 
     console.log("eventId: " + eventId);
 
-    var deleteData = {
-        method: 'DELETE',
-        body: eventId  ,
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-    }
-
-    fetch(TIMERMIND_URL, deleteData)
-        .then(function (response) {
-            console.log('deleted event');
-            console.log('Response: ' + response.data);
-        })
-        .catch(err => console.log('Error in deleteEvent'));
+    (async () => {
+        try {
+            var response = await fetch(TIMERMIND_URL + "Delete/" + eventId);
+            var data = await response.json();
+        } catch (e) {
+            console.log("Error in deleteEvent " + e);
+        }
+    })();
 };
+
 async function getAPIStatus() {
     (async () => {
         try {
