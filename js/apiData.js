@@ -76,14 +76,15 @@ async function deleteEvent(eventId) {
 
     console.log("eventId: " + eventId);
 
-    (async () => {
-        try {
-            var response = await fetch(TIMERMIND_URL + "Delete/" + eventId);
-            var data = await response.json();
-        } catch (e) {
-            console.log("Error in deleteEvent " + e);
-        }
-    })();
+    var requestOptions = {
+        method: 'DELETE',
+        redirect: 'follow'
+      };
+      // https://timermind.azurewebsites.net/Api/Event/Delete/1
+      fetch(TIMERMIND_URL + "Delete/" + eventId, requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 };
 
 async function getAPIStatus() {
