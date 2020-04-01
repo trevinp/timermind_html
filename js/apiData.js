@@ -69,6 +69,8 @@ async function saveEvent(newEvent) {
             console.log('Response: ' + response.data);
         })
         .catch(err => console.log('Error in saveevent'));
+
+        getEvents();
 };
 
 async function deleteEvent(eventId) {
@@ -85,6 +87,8 @@ async function deleteEvent(eventId) {
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
+
+        getEvents();
 };
 
 async function getAPIStatus() {
