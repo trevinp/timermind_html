@@ -8,6 +8,7 @@ selectedId = 0;
 async function getEvents() {    
     (async () => {
         try {
+            console.log("In getEvents");
             _ownerID = getCookie('timermindUser');
             let response = await fetch(TIMERMIND_URL + GET_EVENTS + _ownerID);
             let data = await response.json();
@@ -82,8 +83,9 @@ async function deleteEvent(eventId) {
         method: 'DELETE',
         redirect: 'follow'
       };
+      _ownerID = getCookie('timermindUser');
       // https://timermind.azurewebsites.net/Api/Event/Delete/1
-      fetch(TIMERMIND_URL + "Delete/" + eventId, requestOptions)
+      fetch(TIMERMIND_URL + "Delete/" + eventId + "/" + _ownerID, requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
