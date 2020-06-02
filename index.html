@@ -16,8 +16,7 @@
     <title>Timermind</title>
 </head>
 
-<body class="container">
-
+<body class="container">    
     <header>
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -44,7 +43,7 @@
 
             <div class="g-signin2" data-onsuccess="onSignIn"></div>
             <div>
-                <a href="#" onclick="signOut();">Sign out</a>
+                <a href="#" onclick="signOut();" style="color:lightyellow">Sign out</a>
             </div>
         </nav>
     </header>
@@ -64,6 +63,8 @@
         <div id="timermind-table"></div>
 
         <div id="btnDelete" class="btn btn-info btn-md" style="width: 13em;"  onclick="deleteRow()">Delete Highlighted Row</div>
+
+        <div id="btnUpdate" class="btn btn-info btn-md" style="width: 13em;"  onclick="saveChanges()">Save Changes</div>
 
     </main>
 
@@ -125,12 +126,12 @@
 
     <script>
         function onSignIn(googleUser) { //hi
-            // console.log('in onsignin');
+            console.log('in onsignin');
             GoogleUser = googleUser;
             // Useful data for your client-side scripts:
             var profile = googleUser.getBasicProfile();
             // console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-            // console.log('Full Name: ' + profile.getName());
+            console.log('Full Name: ' + profile.getName());
             // console.log('Given Name: ' + profile.getGivenName());
             // console.log('Family Name: ' + profile.getFamilyName());
             //console.log("Image URL: " + profile.getImageUrl());
@@ -141,6 +142,7 @@
             // console.log("ID Token: " + id_token);
             setCookie('timermindUser', profile.getId(), 365);
             setCookie('email', profile.getEmail(), 365);
+            getEvents();
         }
     </script>
 
@@ -153,14 +155,30 @@
                 setCookie('email', '', 0);
             });
             reset();
+            getEvents();
         }
 
         function deleteRow() {
             alert('Delete Row: ' + selectedId + "?");
             console.log("in deleteRow");
             deleteEvent(selectedId);
+            getEvents();
         }
 
+        function saveChanges() {
+            console.log("in saveChanges");
+            //var selectedRows = $("#timermind-table").tabulator("getSelectedRows"); //get array of currently selected row components.
+            var selectedRows = eventTable.getSelectedRows();
+            var row = selectedRows[0]._row.data;            
+            console.log('Name: ' + row.Name);
+            //Id: 1, OwnerId: _ownerID, Name: eventName, EventType: eventType, Date: eventDate, OccurenceType: eventOccurence
+            document.getElementById('description').value = row.Name;
+           // document.getElementById('date').value = row.Date; // yyyy-mm-dd
+            document.getElementById('eventType').value = row.EventType;
+            document.getElementById('occurenceType').value = row.OccurenceType;
+            document.getElementById('notes').value = row.Notes;
+            SaveNew();
+        }
     </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -174,7 +192,7 @@
     <script type="text/javascript" src="dist_tabulator/js/tabulator.min.js"></script>
     <script src="js/tmEvent.js"></script>
     <script src="js/apiData.js"></script>
-    <script src="js/app.js">document.getElementById("ownerid").value = _ownerID;</script>
+    <script src="js/app.js">document.getElementById("ownerid").value = _ownerID;</script>    
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </body>

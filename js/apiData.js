@@ -17,7 +17,6 @@ async function getEvents() {
             eventTable = new Tabulator("#timermind-table", {
                 rowClick:function(e, row){
                     selectedId = row.getData().Id; // Get ID of selected row
-                    //alert('You selected a row with id: ' + selectedId);
                 },
                 height: 205,
                 data: eventTableData,
@@ -25,8 +24,8 @@ async function getEvents() {
                 resizableColumns: true,
                 selectable: 1,
                 columns: [
-                    { title: "ID", field: "Id", width: 50, editor: "input" },
-                    { title: "Event Name", field: "Name", width: 150, editor: "input", },
+                    { title: "ID", field: "Id", width: 50, editor: "input", editable:true },
+                    { title: "Event Name", field: "Name", width: 150, editor: "input", editable:true },
                     { title: "Type", field: "EventType", align: "left", editor: "select", editorParams: { values: ["Birthday", "Anniversary", "Misc"] } },
                     { title: "Date", field: "Date", editor: "input" },
                     { title: "Occurence", field: "OccurenceType", editor: "select", editorParams: { values: ["Yearly", "Monthly", "Weekly", "None"] } },
@@ -35,7 +34,7 @@ async function getEvents() {
             });
         }
         catch (e) {
-            console.log("Error in getEvents " + e);
+            console.log("Error in getEvents: " + e);
         }
     })();
 };
@@ -87,8 +86,8 @@ async function deleteEvent(eventId) {
       // https://timermind.azurewebsites.net/Api/Event/Delete/1
       fetch(TIMERMIND_URL + "Delete/" + eventId + "/" + _ownerID, requestOptions)
         .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
+        .then(result => console.log('delete action result: ' + result))
+        .catch(error => console.log('delete error', error));
 
         getEvents();
 };

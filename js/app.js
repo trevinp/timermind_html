@@ -35,6 +35,7 @@ function SaveNew() {
         Id: 1, OwnerId: _ownerID, Name: eventName, EventType: eventType,
         Date: eventDate, OccurenceType: eventOccurence
     }]);
+    getEvents();
 }
 
 function reset() {
