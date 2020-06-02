@@ -167,13 +167,11 @@
 
         function saveChanges() {
             console.log("in saveChanges");
-            //var selectedRows = $("#timermind-table").tabulator("getSelectedRows"); //get array of currently selected row components.
             var selectedRows = eventTable.getSelectedRows();
             var row = selectedRows[0]._row.data;            
-            console.log('Name: ' + row.Name);
-            //Id: 1, OwnerId: _ownerID, Name: eventName, EventType: eventType, Date: eventDate, OccurenceType: eventOccurence
             document.getElementById('description').value = row.Name;
-           // document.getElementById('date').value = row.Date; // yyyy-mm-dd
+            var date = row.Date.toISOString().split('T')[0]
+            document.getElementById('date').value = date;
             document.getElementById('eventType').value = row.EventType;
             document.getElementById('occurenceType').value = row.OccurenceType;
             document.getElementById('notes').value = row.Notes;
