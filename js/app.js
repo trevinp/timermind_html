@@ -30,12 +30,12 @@ function SaveNew() {
     document.getElementById("notes").value = "";
     var myEvent = new tmEvent(_ownerID, _ownerID, eventName, eventType, Notes, eventDate, eventOccurence);
     saveEvent(myEvent);
-
+    getEvents();
     eventTable.updateOrAddData([{
         Id: 1, OwnerId: _ownerID, Name: eventName, EventType: eventType,
         Date: eventDate, OccurenceType: eventOccurence
     }]);
-    getEvents();
+
 }
 
 function reset() {
@@ -54,7 +54,7 @@ function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/ ;";
 }
 
 function getCookie(c_name) {

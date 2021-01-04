@@ -65,10 +65,9 @@ async function saveEvent(newEvent) {
 
     fetch(TIMERMIND_URL, fetchData)
         .then(function (response) {
-            console.log('added new event');
-            console.log('Response: ' + response.data);
+            console.log('added new event: ' + data.Name);
         })
-        .catch(err => console.log('Error in saveevent'));
+        .catch(err => console.log('Error in saveEvent' ));
 
         getEvents();
 };
